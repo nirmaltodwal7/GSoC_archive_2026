@@ -1,0 +1,38 @@
+name: Add Contributor to README
+
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  add-contributor:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add Contributor
+        run: |
+          USERNAME="${{ github.event.pull_request.user.login }}"
+          PROFILE_URL="https://github.com/$USERNAME"
+          AVATAR_URL="https://github.com/$USERNAME.png"
+          
+          LINK_MD="<a href=\"$PROFILE_URL\"><img src=\"$AVATAR_URL\" width=\"50px\" alt=\"$USERNAME\" /></a>"
+          
+          if ! grep -q "href=\"$PROFILE_URL\"" README.md; then
+            sed -i "/<!-- CONTRIBUTORS_END -->/i $LINK_MD" README.md
+            
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            
+            git add README.md
+            git commit -m "docs: add $USERNAME to contributors in README"
+            git push
+          else
+            echo "Contributor $USERNAME is already in the README."
+          fi
