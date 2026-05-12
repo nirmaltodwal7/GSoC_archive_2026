@@ -5,6 +5,14 @@
 
 ### <p align="center"> ⭐ Star this repo to bookmark it for future reference! ⭐ </p>
 
+<p align="center">
+    <img src="https://github.com/Rishabh04-02/The-Beginners-Guide-to-Google-Summer-of-Code-GSoC/blob/master/gsoclogo.svg">    
+</p>
+
+### <p align="center"> ⭐ Star this repo to bookmark it for future reference! ⭐ </p>
+
+## Please note that
+The 2025 proposals can be found on the repo [SammanSarkar/GSoC_archive_2025](https://github.com/SammanSarkar/GSoC_archive_2025) and for proposals from 2024 and earlier years you can access here [Aritra8438/GSoC_archive](https://github.com/Aritra8438/GSoC_archive)
 
 ## Folder Structure
 
